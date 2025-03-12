@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 預設第二張圖片
     const secondImage = new Image();
-    secondImage.src = "assets/image1.jpeg";
+    secondImage.src = "image1.jpeg";
 
     let counter = 0;
     let isAnimating = false;
