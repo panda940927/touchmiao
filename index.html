@@ -41,13 +41,13 @@
 <body>
     <div class="container">
         <div class="image-container" id="imgContainer">
-            <img id="mainImage" src="/Users/panda/VS_code/html/touch/image.jpeg" alt="第一張圖片">
+            <img id="mainImage" src="image.jpeg" alt="第一張圖片">
         </div>
         <div class="counter" id="clickCounter">點擊次數: 0</div>
     </div>
 
     <audio id="clickSound" preload="auto">
-        <source src="/Users/panda/VS_code/html/touch/audio.mp3" type="audio/mpeg">
+        <source src="audio.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -59,7 +59,7 @@
     
     // 預設第二張圖片
     const secondImage = new Image();
-    secondImage.src = "/Users/panda/VS_code/html/touch/image1.jpeg";
+    secondImage.src = "image1.jpeg";
     
     let counter = 0;
     let isAnimating = false;
