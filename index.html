@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>點擊計數器</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .image-container {
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            max-height: 70vh;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+        .counter {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container" id="imgContainer">
+            <img id="mainImage" src="/Users/panda/VS_code/html/touch/image.jpeg" alt="第一張圖片">
+        </div>
+        <div class="counter" id="clickCounter">點擊次數: 0</div>
+    </div>
+
+    <audio id="clickSound" preload="auto">
+        <source src="/Users/panda/VS_code/html/touch/audio.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const imgContainer = document.getElementById('imgContainer');
+    const mainImage = document.getElementById('mainImage');
+    const clickCounter = document.getElementById('clickCounter');
+    const clickSound = document.getElementById('clickSound');
+    
+    // 預設第二張圖片
+    const secondImage = new Image();
+    secondImage.src = "/Users/panda/VS_code/html/touch/image1.jpeg";
+    
+    let counter = 0;
+    let isAnimating = false;
+    
+    imgContainer.addEventListener('click', function() {
+        if (isAnimating) return;
+        
+        isAnimating = true;
+        counter++;
+        clickCounter.textContent = `點擊次數: ${counter}`;
+        
+        // 重新播放音效
+        clickSound.pause();
+        clickSound.currentTime = 0;
+        clickSound.play();
+        
+        // 切換到第二張圖片
+        const originalSrc = mainImage.src;
+        mainImage.src = secondImage.src;
+        
+        // 0.1秒後切換回原始圖片
+        setTimeout(function() {
+            mainImage.src = originalSrc;
+            isAnimating = false;
+        }, 100);
+    });
+});
+    </script>
+</body>
+</html>
